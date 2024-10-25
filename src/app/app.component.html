@@ -1,0 +1,45 @@
+<div class="input-container">
+  <input [(ngModel)]="newItemContent" placeholder="Enter item" />
+  <button (click)="addNewItem()">Add Item</button>
+</div>
+
+<div cdkDropListGroup class="columns">
+  <!-- New Column -->
+  <div
+    class="column"
+    cdkDropList
+    [cdkDropListData]="newItems"
+    (cdkDropListDropped)="drop($event)" 
+  >
+    <h3>New</h3>
+    <div *ngFor="let item of newItems" cdkDrag class="item">
+      {{ item }}
+    </div>
+  </div>
+
+  <!-- Process Column -->
+  <div
+    class="column"
+    cdkDropList
+    [cdkDropListData]="processItems"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <h3>Process</h3>
+    <div *ngFor="let item of processItems" cdkDrag class="item">
+      {{ item }}
+    </div>
+  </div>
+
+  <!-- Done Column -->
+  <div
+    class="column"
+    cdkDropList
+    [cdkDropListData]="doneItems"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <h3>Done</h3>
+    <div *ngFor="let item of doneItems" cdkDrag class="item">
+      {{ item }}
+    </div>
+  </div>
+</div>
